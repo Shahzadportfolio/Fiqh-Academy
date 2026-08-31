@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Fiqh Academy</title>
+  
+  <!-- FontAwesome & Google Fonts Dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-teal: #0C9586;
+      --primary-blue: #2A2A86;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ================= Top Header matching Contact & Publications Pages ================= */
+    .site-header {
+      position: relative;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .header-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: 2;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: nowrap;
+    }
+
+    .header-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-blue);
+      background-color: #ffffff;
+      border: 1.5px solid var(--primary-blue);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+      white-space: nowrap;
+    }
+
+    .header-btn:hover {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      color: var(--primary-teal);
+      transition: transform 0.2s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .search-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.5;
+    }
+
+    .search-btn:hover {
+      color: #097368;
+      transform: scale(1.1);
+    }
+
+    /* Mobile Hamburger Menu Toggle Button */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      padding: 0.25rem;
+      z-index: 1001;
+    }
+
+    /* ================= Main Navigation Bar ================= */
+    .main-navigation {
+      width: 100%;
+      height: 48px;
+      background-color: var(--primary-teal);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+    }
+
+    /* Dropdown Styles matching references */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--primary-teal);
+      min-width: 210px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      border-radius: 0 0 8px 8px;
+      display: none;
+      list-style: none;
+      padding: 0.5rem 0;
+      z-index: 1000;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .nav-item.dropdown:hover > .nav-link {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.6rem 1.25rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background-color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding-left: 1.5rem;
+    }
+
+    /* ================= About Page Hero Section ================= */
+    .about-hero-section {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      background: url('Campus pic/Fiqhacademy.webp') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 2.5rem;
+    }
+
+    .about-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 1;
+    }
+
+    .about-hero-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1350px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .about-title-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 2rem 2.5rem;
+      max-width: 620px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border-bottom: 4px solid var(--primary-blue);
+    }
+
+    .about-hero-heading {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-teal);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
+    }
+
+    .about-hero-text {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #4a5568;
+      font-weight: 500;
+    }
+
+    /* ================= Detailed Welcome Section ================= */
+    .about-detail-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 5rem 2rem;
+    }
+
+    .about-detail-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .detail-text-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .detail-welcome-tag {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #4a5568;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .detail-main-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .detail-body-text {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: #4a5568;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+
+    .detail-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .detail-action-btn:hover {
+      background-color: var(--primary-teal);
+      transform: translateY(-2px);
+    }
+
+    .detail-video-col {
+      width: 100%;
+    }
+
+    .about-video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      background-color: #000;
+    }
+
+    .about-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ================= Vision & Mission Section ================= */
+    .vision-mission-section {
+      position: relative;
+      width: 100%;
+      background-color: var(--primary-teal);
+      padding: 5rem 2rem;
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    .vision-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+      opacity: 0.25;
+    }
+
+    .vision-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(12, 149, 134, 0.94);
+      z-index: 2;
+    }
+
+    .vision-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1350px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: stretch;
+    }
+
+    .vision-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .vision-box:first-child::after {
+      content: "";
+      position: absolute;
+      right: -2rem;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .vision-icon-wrap {
+      width: 55px;
+      height: 55px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .vision-icon-wrap svg {
+      width: 100%;
+      height: 100%;
+      fill: #ffffff;
+    }
+
+    .vision-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .vision-desc {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 400;
+    }
+
+    /* ================= We Offer Islamic Courses Section ================= */
+    .courses-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 5rem 2rem;
+    }
+
+    .courses-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .courses-image-col {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .courses-image-col img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .trusted-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: #ffffff;
+      padding: 1.1rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .trusted-badge-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+      line-height: 1.3;
+    }
+
+    .courses-content-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .courses-tag {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .courses-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 1.2rem;
+      line-height: 1.15;
+    }
+
+    .courses-desc {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 2.5rem;
+    }
+
+    .courses-features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .courses-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .feature-icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(42, 42, 134, 0.2);
+    }
+
+    .feature-icon-circle svg {
+      width: 20px;
+      height: 20px;
+      fill: #ffffff;
+    }
+
+    .feature-text {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d3748;
+    }
+
+    /* ================= Programs and Offerings Section ================= */
+    .offerings-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 5rem 2rem;
+    }
+
+    .offerings-container {
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    .offerings-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .offerings-heading {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--primary-teal);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .offering-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .offering-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .offering-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .offering-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--primary-blue);
+    }
+
+    .offering-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.85rem;
+      line-height: 1.3;
+    }
+
+    .offering-desc {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+    }
+
+    .offering-read-more {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      text-decoration: none;
+      margin-top: auto;
+      transition: color 0.2s ease;
+    }
+
+    .offering-read-more:hover {
+      color: var(--primary-teal);
+    }
+
+    /* ================= Our Values Section ================= */
+    .values-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 5rem 2rem;
+    }
+
+    .values-container {
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    .values-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .values-tag {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #4a5568;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .values-heading {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      letter-spacing: -0.5px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .value-card {
+      background-color: #f3fcfb;
+      border-radius: 16px;
+      padding: 2.8rem 2.4rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 1px solid rgba(12, 149, 134, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .value-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background-color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(42, 42, 134, 0.25);
+    }
+
+    .value-icon-circle svg {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+    }
+
+    .value-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a202c;
+      margin-bottom: 1rem;
+    }
+
+    .value-desc {
+      font-size: 0.98rem;
+      line-height: 1.75;
+      color: #4a5568;
+    }
+
+    /* ================= Bottom Footer & Statistics Section ================= */
+    .academy-footer {
+      width: 100%;
+      background-color: var(--primary-teal);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-stats-bar {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr repeat(3, auto);
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 2rem;
+    }
+
+    .footer-stat-headline {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .footer-stats-group {
+      display: flex;
+      gap: 3.5rem;
+    }
+
+    .footer-stat-item {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .footer-stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+
+    .footer-stat-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 0.25rem;
+    }
+
+    .footer-stat-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.4rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .footer-btn-dark:hover {
+      background-color: var(--primary-teal);
+      transform: translateY(-2px);
+    }
+
+    .footer-main-content {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-brand-logo {
+      height: 50px;
+      width: auto;
+      margin-bottom: 1.25rem;
+      object-fit: contain;
+    }
+
+    .footer-brand-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer-social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .footer-social-icon:hover {
+      background-color: var(--primary-blue);
+    }
+
+    .footer-social-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .footer-col-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+      display: inline-block;
+    }
+
+    .footer-link:hover,
+    .footer-link.active {
+      color: #ffffff;
+      padding-left: 4px;
+      font-weight: 600;
+    }
+
+    .footer-bottom-bar {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Responsive queries */
+    @media (max-width: 1200px) {
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .offerings-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-main-content,
+      .footer-stats-bar {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-stats-group {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .about-detail-container,
+      .courses-container,
+      .vision-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .vision-box:first-child::after {
+        display: none;
+      }
+
+      .site-header {
+        height: 75px;
+      }
+      .header-content {
+        padding: 0.5rem 1rem;
+      }
+      .header-logo img {
+        height: 42px;
+      }
+      .header-actions {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .main-navigation {
+        height: auto;
+        display: none;
+        background-color: var(--primary-teal);
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        z-index: 1000;
+      }
+      .main-navigation.mobile-active {
+        display: block;
+      }
+      .nav-container {
+        padding: 1rem;
+        justify-content: flex-start;
+      }
+      .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+        gap: 0.25rem;
+      }
+      .nav-link {
+        padding: 0.75rem 1rem;
+        width: 100%;
+        border-radius: 4px;
+        font-size: 0.95rem;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        padding-left: 1rem;
+        display: none;
+      }
+      .nav-item.dropdown.mobile-open .dropdown-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .values-grid,
+      .offerings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-header {
+        height: 65px;
+      }
+      .main-navigation {
+        top: 65px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Consistent Top Header -->
+  <header class="site-header">
+    <img src="background/header background pic.png" alt="Header Background" class="header-bg-img" />
+    <div class="header-overlay"></div>
+
+    <div class="header-content">
+      <a href="index.html" class="header-logo">
+        <img src="logo/Asset-1-1.png" alt="Fiqh Academy Karachi Logo" />
+      </a>
+
+      <div class="header-actions">
+        <a href="locations.html" class="header-btn">Locations</a>
+        <a href="donations.html" class="header-btn">Support a Student</a>
+        <a href="contact.html" class="header-btn">Contact Us</a>
+
+        <button class="search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Consistent Main Navigation Bar -->
+  <nav class="main-navigation" id="mainNav">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+        <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+        <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+        
+        <!-- Campuses Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="locations.html" class="nav-link">Campuses <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="locations.html#johar-campus">Johar Campus</a></li>
+            <li><a href="locations.html#masjid-campus">Masjid Campus</a></li>
+            <li><a href="locations.html#maktab-campus">Maktab Campus</a></li>
+            <li><a href="locations.html#main-campus">Main Campus</a></li>
+            <li><a href="locations.html#e-academy">E Academy</a></li>
+          </ul>
+        </li>
+
+        <!-- Publications Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="#publications" class="nav-link">Publications <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="book.html">Books</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="iqbaliat.html">Iqbaliyat</a></li>
+            <li><a href="islahimajlis.html">Islahi Majlis</a></li>
+          </ul>
+        </li>
+
+        <!-- Monthly Magazine Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="#magazine" class="nav-link">Monthly Magazine <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="special-edition.html">Special Edition</a></li>
+            <li><a href="2025.html">2025</a></li>
+            <li><a href="2024.html">2024</a></li>
+            <li><a href="2023.html">2023</a></li>
+            <li><a href="2022.html">2022</a></li>
+            <li><a href="2021.html">2021</a></li>
+            <li><a href="2020.html">2020</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a href="https://www.yasalunak.com/" class="nav-link" target="_blank">Darul Ifta</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- About Hero Section -->
+  <section class="about-hero-section">
+    <div class="about-hero-overlay"></div>
+    <div class="about-hero-container">
+      <div class="about-title-card">
+        <h1 class="about-hero-heading">About Us</h1>
+        <p class="about-hero-text">
+          Fiqh Academy, founded in 2018 under the supervision of bona fide, classical Ulama and Mashaikh, is an Islamic Educational Institute in Gulistan-e-Johar Karachi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Welcome Section -->
+  <section class="about-detail-section">
+    <div class="about-detail-container">
+      <div class="detail-text-col">
+        <span class="detail-welcome-tag">WELCOME TO</span>
+        <h2 class="detail-main-title">FIQH ACADEMY</h2>
+        <p class="detail-body-text">
+          Fiqh Academy, founded in 2018 under the supervision of bona fide, classical Ulama and Mashaikh, is an Islamic Educational Institute in Gulistan-e-Johar Karachi. Its operations are managed by a team of Ulama, Talaba, and Volunteers educated in both Islamic as well as Contemporary Knowledge. This Institute adheres to the Religious Orientation of Akabir Ulama-e-Deoband i.e. the most eminent tradition of Ahl-us-Sunnah Wal Jama'ah present especially in the Sub-Continent, and strictly follows the Religious Rulings of Ulama-e-Deoband under Fiqh-e-Hanafi.
+        </p>
+        <a href="contact.html" class="detail-action-btn">Contact Us</a>
+      </div>
+
+      <div class="detail-video-col">
+        <div class="about-video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/x2_hbfzc7I8" 
+            title="Fiqh Academy Introduction Video" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Vision & Our Mission Section -->
+  <section class="vision-mission-section">
+    <img src="background/header background pic.png" alt="Background Pattern" class="vision-bg-img" />
+    <div class="vision-overlay"></div>
+
+    <div class="vision-container">
+      <div class="vision-box">
+        <div class="vision-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        </div>
+        <h3 class="vision-title">OUR VISION</h3>
+        <p class="vision-desc">
+          To educate Muslim masses in the light of Islamic Ideology and Sciences using modern phraseology by carrying forward the deep-rooted tradition of Masjid, Madrasah, and Khanqah, so that they are equipped to resist the all-out Western intellectual invasion.
+        </p>
+      </div>
+
+      <div class="vision-box">
+        <div class="vision-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+        </div>
+        <h3 class="vision-title">OUR MISSION</h3>
+        <p class="vision-desc">
+          To provide basic and advanced Islamic education in the form of short and extensive specialized courses to men and women from all professions and age groups hailing from a modern educational background.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- We Offer Islamic Courses Section -->
+  <section class="courses-section">
+    <div class="courses-container">
+      <div class="courses-image-col">
+        <img src="about pic/01.webp" alt="Fiqh Academy Johar Campus Reception" />
+        <div class="trusted-badge">
+          <div class="trusted-badge-text">Trusted by more than<br><strong style="font-size: 1.3rem; color: #2A2A86;">4,000</strong><br>students</div>
+        </div>
+      </div>
+
+      <div class="courses-content-col">
+        <span class="courses-tag">WHY CHOOSE US</span>
+        <h2 class="courses-title">We Offer Islamic Courses</h2>
+        <p class="courses-desc">
+          The Johar Campus of Fiqh Academy, founded in 2018 under the supervision of bona fide, classical Ulama and Mashaikh, is an Islamic Educational Institute in Gulistan-e-Johar Karachi.
+        </p>
+
+        <ul class="courses-features-list">
+          <li class="courses-feature-item">
+            <div class="feature-icon-circle">
+              <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+            </div>
+            <span class="feature-text">Basic to advanced Islamic courses</span>
+          </li>
+          <li class="courses-feature-item">
+            <div class="feature-icon-circle">
+              <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+            </div>
+            <span class="feature-text">Certified and flexible programs</span>
+          </li>
+          <li class="courses-feature-item">
+            <div class="feature-icon-circle">
+              <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+            </div>
+            <span class="feature-text">Qualified Islamic scholars</span>
+          </li>
+          <li class="courses-feature-item">
+            <div class="feature-icon-circle">
+              <svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+            </div>
+            <span class="feature-text">On-campus and online learning</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs and Offerings Section -->
+  <section class="offerings-section">
+    <div class="offerings-container">
+      <div class="offerings-header">
+        <h2 class="offerings-heading">Programs and Offerings at Fiqh Academy</h2>
+      </div>
+
+      <div class="offerings-grid">
+        <div class="offering-card">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+          <h3 class="offering-title">In-Person & Online Classes</h3>
+          <p class="offering-desc">
+            We offer in-person and online classes for local and global students, fostering academic excellence.
+          </p>
+          <a href="courses.html" class="offering-read-more">Read More</a>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+          <h3 class="offering-title">Weekly Majlis</h3>
+          <p class="offering-desc">
+            A communal space for spiritual reminders and scholarly company to nourish the heart through meaningful discussion.
+          </p>
+          <a href="islahimajlis.html" class="offering-read-more">Read More</a>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          </div>
+          <h3 class="offering-title">Seminars (English & Arabic)</h3>
+          <p class="offering-desc">
+            Our monthly seminars tackle key topics, with leading scholars offering guidance on contemporary issues.
+          </p>
+          <a href="events.html" class="offering-read-more">Read More</a>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+          </div>
+          <h3 class="offering-title">Khanqah</h3>
+          <p class="offering-desc">
+            A dedicated space for <em>Tazkiyah</em> and spiritual growth. We focus on dhikr and prophetic character to help seekers purify the soul.
+          </p>
+          <a href="islahimajlis.html" class="offering-read-more">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values Section -->
+  <section class="values-section">
+    <div class="values-container">
+      <div class="values-header">
+        <span class="values-tag">OUR VALUES</span>
+        <h2 class="values-heading">Online Courses for Everyone</h2>
+      </div>
+
+      <div class="values-grid">
+        <!-- 1: Passion -->
+        <div class="value-card">
+          <div class="value-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+          </div>
+          <h3 class="value-title">Passion</h3>
+          <p class="value-desc">Sharing a deep love for Islamic learning to inspire students across the world.</p>
+        </div>
+
+        <!-- 2: Community -->
+        <div class="value-card">
+          <div class="value-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="value-title">Community</h3>
+          <p class="value-desc">Creating a welcoming space where students connect and grow in faith together.</p>
+        </div>
+
+        <!-- 3: Commitment -->
+        <div class="value-card">
+          <div class="value-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.03 2.18 13.82 2 13.6 2h-4c-.22 0-.43.18-.47.41l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.23.25.41.47.41h4c.22 0 .43-.18.47-.41l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+          </div>
+          <h3 class="value-title">Commitment</h3>
+          <p class="value-desc">Providing authentic and reliable education rooted deeply in the traditions of scholarship.</p>
+        </div>
+
+        <!-- 4: Growth -->
+        <div class="value-card">
+          <div class="value-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          </div>
+          <h3 class="value-title">Growth</h3>
+          <p class="value-desc">Helping every individual improve their character through the light of sacred knowledge.</p>
+        </div>
+
+        <!-- 5: Honesty -->
+        <div class="value-card">
+          <div class="value-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          </div>
+          <h3 class="value-title">Honesty</h3>
+          <p class="value-desc">Maintaining the highest levels of integrity and transparency in all our teachings.</p>
+        </div>
+
+        <!-- 6: Team Work -->
+        <div class="value-card">
+          <div class="value-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <h3 class="value-title">Team Work</h3>
+          <p class="value-desc">Working together as one family to bridge traditional wisdom with modern life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consistent Footer & Statistics Section -->
+  <footer class="academy-footer">
+    <div class="footer-stats-bar">
+      <h2 class="footer-stat-headline">Start learning with 4000<br />students around the world.</h2>
+      
+      <div class="footer-stats-group">
+        <div class="footer-stat-item">
+          <span class="footer-stat-number">85</span>
+          <span class="footer-stat-label">Online Courses</span>
+        </div>
+        <div class="footer-stat-item">
+          <span class="footer-stat-number">21</span>
+          <span class="footer-stat-label">Certified Instructors</span>
+        </div>
+        <div class="footer-stat-item">
+          <span class="footer-stat-number">4000</span>
+          <span class="footer-stat-label">Students</span>
+        </div>
+      </div>
+
+      <div class="footer-stat-actions">
+        <a href="contact.html" class="footer-btn-dark">Contact Us</a>
+        <a href="donations.html" class="footer-btn-dark">Donate Now</a>
+        <a href="courses.html" class="footer-btn-dark">Browse All Courses</a>
+      </div>
+    </div>
+
+    <div class="footer-main-content">
+      <div class="footer-brand-col">
+        <img src="logo/Asset-1-1.png" alt="Fiqh Academy Karachi Logo" class="footer-brand-logo" />
+        <p class="footer-brand-text">
+          To educate Muslim masses in the light of Islamic ideology and Sciences using modern phraseology by carrying forward the deep-rooted tradition of Masjid, Madrasah, and Khanqah, so that they are equipped to resist the all-out western intellectual invasion.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/FiqhAcademy" target="_blank" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+          <a href="https://x.com/FiqhAcademyPK" target="_blank" class="footer-social-icon" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://chat.whatsapp.com/LT9e6ecJCyBA0myFVZv82s" target="_blank" class="footer-social-icon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@FiqhAcademyofficial" target="_blank" class="footer-social-icon" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Quick Links</h3>
+        <ul class="footer-links-list">
+          <li><a href="index.html" class="footer-link">Home Education</a></li>
+          <li><a href="about.html" class="footer-link active">About</a></li>
+          <li><a href="events.html" class="footer-link">Events</a></li>
+          <li><a href="donations.html" class="footer-link">Donations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Explore Our Courses</h3>
+        <ul class="footer-links-list">
+          <li><a href="courses.html" class="footer-link">Taleem ul Islam</a></li>
+          <li><a href="courses.html" class="footer-link">Full Time Alim Course</a></li>
+          <li><a href="courses.html" class="footer-link">Dars-e-Nizami</a></li>
+          <li><a href="courses.html" class="footer-link">Arabic Grammar Course</a></li>
+          <li><a href="courses.html" class="footer-link">Arabic Language Course</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Our Campuses</h3>
+        <ul class="footer-links-list">
+          <li><a href="locations.html#johar-campus" class="footer-link">Johar Campus</a></li>
+          <li><a href="locations.html#masjid-campus" class="footer-link">Masjid Campus</a></li>
+          <li><a href="locations.html#maktab-campus" class="footer-link">Maktab Campus</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p>&copy; 2025 Fiqh Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile Navigation & Dropdown Toggle logic */
+    (function() {
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        if (mobileToggle && mainNav) {
+            mobileToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('mobile-active');
+                const icon = mobileToggle.querySelector('i');
+                if (mainNav.classList.contains('mobile-active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Mobile Dropdown toggles
+            const dropdownItems = mainNav.querySelectorAll('.nav-item.dropdown');
+            dropdownItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        item.classList.toggle('mobile-open');
+                    }
+                });
+            });
+        }
+    })();
+  </script>
+
+</body>
+</html>

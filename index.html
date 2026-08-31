@@ -1,0 +1,2505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiqh Academy</title>
+  
+  <!-- FontAwesome & Google Fonts Dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-teal: #0C9586;
+      --primary-blue: #2A2A86;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ================= Top Header matching Publications & Contact Pages ================= */
+    .site-header {
+      position: relative;
+      width: 100%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .header-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: 2;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      height: 55px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: nowrap;
+    }
+
+    .header-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary-blue);
+      background-color: #ffffff;
+      border: 1.5px solid var(--primary-blue);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+      white-space: nowrap;
+    }
+
+    .header-btn:hover {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      color: var(--primary-teal);
+      transition: transform 0.2s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .search-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.5;
+    }
+
+    .search-btn:hover {
+      color: #097368;
+      transform: scale(1.1);
+    }
+
+    /* Mobile Hamburger Menu Toggle Button */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      padding: 0.25rem;
+      z-index: 1001;
+    }
+
+    /* ================= Main Navigation Bar ================= */
+    .main-navigation {
+      width: 100%;
+      height: 48px;
+      background-color: var(--primary-teal);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+    }
+
+    /* Dropdown Styles matching references */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--primary-teal);
+      min-width: 210px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      border-radius: 0 0 8px 8px;
+      display: none;
+      list-style: none;
+      padding: 0.5rem 0;
+      z-index: 1000;
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .nav-item.dropdown:hover > .nav-link {
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.6rem 1.25rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background-color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding-left: 1.5rem;
+    }
+
+    /* ================= Hero Slider Section ================= */
+    .hero-slider-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 138px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      display: none;
+      width: 100%;
+      min-height: calc(100vh - 138px);
+      position: relative;
+    }
+
+    .hero-slide.active {
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text-content {
+      max-width: 600px;
+    }
+
+    .hero-tagline {
+      color: var(--primary-teal);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero-author {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-role {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--primary-blue);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .meta-icon {
+      font-size: 1.1rem;
+    }
+
+    .hero-buttons-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-teal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.75rem;
+      background-color: var(--primary-teal);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-teal:hover {
+      background-color: #097368;
+      transform: translateY(-2px);
+    }
+
+    .slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.45);
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 15;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .slider-arrow:hover {
+      background-color: var(--primary-blue);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .slider-arrow.left {
+      left: 1.5rem;
+    }
+
+    .slider-arrow.right {
+      right: 1.5rem;
+    }
+
+    .slider-arrow svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ================= Feature Banner Section ================= */
+    .feature-banner-section {
+      position: relative;
+      width: 100%;
+      background-color: var(--primary-teal);
+      overflow: hidden;
+    }
+
+    .feature-bg-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .feature-teal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(12, 149, 134, 0.95);
+      z-index: 2;
+    }
+
+    .feature-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .feature-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .feature-column:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .feature-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* ================= About Us Section ================= */
+    .about-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 4rem 2rem;
+    }
+
+    .about-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .about-subline {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-headline {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .about-headline .teal-text {
+      color: var(--primary-teal);
+    }
+
+    .about-headline .blue-text {
+      color: var(--primary-blue);
+    }
+
+    .about-paragraph {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .about-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.75rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .about-btn:hover {
+      background-color: var(--primary-teal);
+      transform: translateY(-2px);
+    }
+
+    .about-video-col {
+      width: 100%;
+    }
+
+    .video-responsive-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-responsive-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ================= Latest Programs Section ================= */
+    .latest-programs-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 3.5rem 2rem 4rem 2rem;
+    }
+
+    .latest-programs-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title-wrapper {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .title-decorative-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-blue);
+      width: 120px;
+    }
+
+    .title-decorative-line::before,
+    .title-decorative-line::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background-color: var(--primary-blue);
+    }
+
+    .title-icon {
+      font-size: 0.9rem;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .program-card {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .card-video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 0.85rem;
+      background-color: #000;
+    }
+
+    .card-video-wrapper iframe,
+    .card-video-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      object-fit: cover;
+    }
+
+    .program-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #222222;
+      line-height: 1.4;
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .program-card-title:hover {
+      color: var(--primary-teal);
+    }
+
+    .browse-all-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 2.2rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .browse-all-btn:hover {
+      background-color: var(--primary-teal);
+      transform: translateY(-2px);
+    }
+
+    /* ================= Adjusted Latest Events Section ================= */
+    .latest-events-section {
+      position: relative;
+      width: 100%;
+      background-color: var(--primary-teal);
+      padding: 2.25rem 2rem;
+      overflow: hidden;
+    }
+
+    .events-bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+      opacity: 0.3;
+    }
+
+    .events-teal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(12, 149, 134, 0.92) 0%, rgba(12, 149, 134, 0.96) 100%);
+      z-index: 2;
+    }
+
+    .events-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1350px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .events-section-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+    }
+
+    .events-title-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      width: 110px;
+      margin: 0 auto 1.75rem auto;
+    }
+
+    .events-title-line::before,
+    .events-title-line::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .event-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .event-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .event-card:hover .event-img-wrapper img {
+      transform: scale(1.03);
+    }
+
+    .event-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      text-align: left;
+    }
+
+    .event-meta-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+
+    .event-info {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .event-info svg {
+      width: 15px;
+      height: 15px;
+      fill: #ffffff;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    .event-online-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.3rem 0.7rem;
+      border-radius: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      align-self: flex-start;
+    }
+
+    .event-online-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: #00ffca;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* ================= Campuses Section ================= */
+    .campuses-section {
+      width: 100%;
+      background-color: #f8fafc;
+      padding: 4.5rem 2rem;
+    }
+
+    .campuses-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .campuses-main-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 2.5rem;
+      line-height: 1.3;
+    }
+
+    .campuses-top-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .campuses-bottom-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .campuses-bottom-grid .campus-card {
+      width: calc(33.333% - 1.33rem);
+    }
+
+    .campus-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1.5px solid #edf2f7;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .campus-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(42, 42, 134, 0.12);
+      border-color: rgba(12, 149, 134, 0.3);
+    }
+
+    .campus-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background-color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .campus-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 0.5rem;
+      transition: transform 0.5s ease;
+    }
+
+    .campus-card:hover .campus-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .campus-badge {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      background-color: rgba(42, 42, 134, 0.85);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 5;
+    }
+
+    .campus-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .campus-tagline {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.25rem;
+    }
+
+    .campus-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.65rem;
+    }
+
+    .campus-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4a5568;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .campus-learn-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.65rem 1.25rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .campus-card:hover .campus-learn-btn {
+      background-color: var(--primary-teal);
+    }
+
+    /* ================= Courses Slider Section ================= */
+    .courses-slider-section {
+      width: 100%;
+      background-color: #ffffff;
+      padding: 4.5rem 2rem;
+      position: relative;
+    }
+
+    .courses-slider-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .courses-track-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0.75rem 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .courses-track {
+      display: flex;
+      gap: 1.75rem;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .course-slide-card {
+      flex: 0 0 calc(33.333% - 1.17rem);
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1.5px solid #edf2f7;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .course-slide-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(42, 42, 134, 0.12);
+      border-color: rgba(12, 149, 134, 0.4);
+    }
+
+    .course-slide-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background-color: #f1f5f9;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .course-slide-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .course-slide-card:hover .course-slide-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .course-slide-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .course-slide-desc {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #4a5568;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .course-slide-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.65rem 1.25rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .course-slide-card:hover .course-slide-btn {
+      background-color: var(--primary-teal);
+    }
+
+    .courses-nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--primary-blue);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 15;
+      transition: all 0.2s ease;
+    }
+
+    .courses-nav-arrow:hover {
+      background: var(--primary-blue);
+      color: #ffffff;
+      border-color: var(--primary-blue);
+    }
+
+    .courses-nav-arrow.left {
+      left: -22px;
+    }
+
+    .courses-nav-arrow.right {
+      right: -22px;
+    }
+
+    .courses-nav-arrow svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .courses-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .course-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #cbd5e1;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .course-dot.active {
+      background-color: var(--primary-blue);
+      transform: scale(1.25);
+    }
+
+    /* ================= Our Features Grid Section ================= */
+    .features-section {
+      width: 100%;
+      background-color: #f8fafc;
+      padding: 4.5rem 2rem;
+    }
+
+    .features-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .feature-item-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 2.2rem 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      border: 1.5px solid #edf2f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      text-decoration: none;
+    }
+
+    .feature-item-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(42, 42, 134, 0.1);
+      border-color: rgba(12, 149, 134, 0.4);
+    }
+
+    .feature-card-icon {
+      width: 55px;
+      height: 55px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--primary-blue);
+    }
+
+    .feature-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card-link {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ================= Bottom Footer & Statistics Section ================= */
+    .academy-footer {
+      width: 100%;
+      background-color: var(--primary-teal);
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-stats-bar {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr repeat(3, auto);
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 2rem;
+    }
+
+    .footer-stat-headline {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .footer-stats-group {
+      display: flex;
+      gap: 3.5rem;
+    }
+
+    .footer-stat-item {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .footer-stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+
+    .footer-stat-label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 0.25rem;
+    }
+
+    .footer-stat-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.4rem;
+      background-color: var(--primary-blue);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .footer-btn-dark:hover {
+      background-color: var(--primary-teal);
+      transform: translateY(-2px);
+    }
+
+    .footer-main-content {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem 2rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-brand-logo {
+      height: 50px;
+      width: auto;
+      margin-bottom: 1.25rem;
+      object-fit: contain;
+    }
+
+    .footer-brand-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer-social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .footer-social-icon:hover {
+      background-color: var(--primary-blue);
+    }
+
+    .footer-social-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .footer-col-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+      display: inline-block;
+    }
+
+    .footer-link:hover,
+    .footer-link.active {
+      color: #ffffff;
+      padding-left: 4px;
+      font-weight: 600;
+    }
+
+    .footer-bottom-bar {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .footer-main-content,
+      .footer-stats-bar {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-stats-group {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .campuses-main-title,
+      .about-headline,
+      .section-title,
+      .events-section-title,
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .course-slide-card {
+        flex: 0 0 100%;
+      }
+
+      .courses-nav-arrow.left {
+        left: 0px;
+      }
+
+      .courses-nav-arrow.right {
+        right: 0px;
+      }
+
+      .events-grid,
+      .campuses-top-grid,
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .campuses-bottom-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .campuses-bottom-grid .campus-card {
+        width: 100%;
+      }
+
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .site-header {
+        height: 75px;
+      }
+      .header-content {
+        padding: 0.5rem 1rem;
+      }
+      .header-logo img {
+        height: 42px;
+      }
+      .header-actions {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .main-navigation {
+        height: auto;
+        display: none;
+        background-color: var(--primary-teal);
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        z-index: 1000;
+      }
+      .main-navigation.mobile-active {
+        display: block;
+      }
+      .nav-container {
+        padding: 1rem;
+        justify-content: flex-start;
+      }
+      .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+        gap: 0.25rem;
+      }
+      .nav-link {
+        padding: 0.75rem 1rem;
+        width: 100%;
+        border-radius: 4px;
+        font-size: 0.95rem;
+      }
+
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        padding-left: 1rem;
+        display: none;
+      }
+      .nav-item.dropdown.mobile-open .dropdown-menu {
+        display: block;
+      }
+
+      .hero-slider-wrapper, .hero-slide {
+        min-height: auto;
+      }
+
+      .hero-container {
+        padding: 2.5rem 1.25rem;
+      }
+
+      .feature-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.25rem;
+      }
+
+      .feature-column {
+        padding: 0;
+      }
+
+      .feature-column:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .programs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-header {
+        height: 65px;
+      }
+      .main-navigation {
+        top: 65px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header with Background Image matching Publications & Contact Pages -->
+  <header class="site-header">
+    <img src="background/header background pic.png" alt="Header Background" class="header-bg-img" />
+    <div class="header-overlay"></div>
+
+    <div class="header-content">
+      <a href="index.html" class="header-logo">
+        <img src="logo/Asset-1-1.png" alt="Fiqh Academy Karachi Logo" />
+      </a>
+
+      <div class="header-actions">
+        <a href="locations.html" class="header-btn">Locations</a>
+        <a href="donations.html" class="header-btn">Support a Student</a>
+        <a href="contact.html" class="header-btn">Contact Us</a>
+
+        <button class="search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Consistent Main Navigation Bar -->
+  <nav class="main-navigation" id="mainNav">
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
+        <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+        
+        <!-- Campuses Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="locations.html" class="nav-link">Campuses <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="locations.html#johar-campus">Johar Campus</a></li>
+            <li><a href="locations.html#masjid-campus">Masjid Campus</a></li>
+            <li><a href="locations.html#maktab-campus">Maktab Campus</a></li>
+            <li><a href="locations.html#main-campus">Main Campus</a></li>
+            <li><a href="locations.html#e-academy">E Academy</a></li>
+          </ul>
+        </li>
+
+        <!-- Publications Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="#publications" class="nav-link">Publications <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="book.html">Books</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="iqbaliat.html">Iqbaliyat</a></li>
+            <li><a href="islahimajlis.html">Islahi Majlis</a></li>
+          </ul>
+        </li>
+
+        <!-- Monthly Magazine Dropdown -->
+        <li class="nav-item dropdown">
+          <a href="#magazine" class="nav-link">Monthly Magazine <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 2px;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="special-edition.html">Special Edition</a></li>
+            <li><a href="2025.html">2025</a></li>
+            <li><a href="2024.html">2024</a></li>
+            <li><a href="2023.html">2023</a></li>
+            <li><a href="2022.html">2022</a></li>
+            <li><a href="2021.html">2021</a></li>
+            <li><a href="2020.html">2020</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a href="https://www.yasalunak.com/" class="nav-link" target="_blank">Darul Ifta</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero-slider-wrapper">
+    <button class="slider-arrow left" onclick="prevSlide()" aria-label="Previous Slide">
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <button class="slider-arrow right" onclick="nextSlide()" aria-label="Next Slide">
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+
+    <div class="hero-slide active">
+      <img src="background/background01.jpeg" alt="Spiritual Gathering Background" class="hero-bg-img" />
+      <div class="hero-container">
+        <div class="hero-text-content">
+          <p class="hero-tagline">Fiqh Academy Present</p>
+          <h1 class="hero-title">Spiritual Gathering</h1>
+          <p class="hero-description">
+            A weekly session conducted by the Director of Fiqh Academy Mufti Owais Pasha Qarni Sahab (DB) aimed at spiritually cleansing the Hearts through sermon, zikr, and Dua.
+          </p>
+          <h2 class="hero-author">Mufti Owais Pasha Qarni Sahib (DB)</h2>
+          <p class="hero-role">President Fiqh Academy Karachi</p>
+
+          <div class="hero-meta-row">
+            <div class="meta-item"><span class="meta-icon">📅</span><span>Every Thursday</span></div>
+            <div class="meta-item"><span class="meta-icon">⏰</span><span>7:00 PM</span></div>
+          </div>
+
+          <div class="hero-buttons-row">
+            <a href="#details" class="btn-teal">View Details</a>
+            <a href="#register" class="btn-teal">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <img src="background/background02.png" alt="Weekly Tafseer Quran Background" class="hero-bg-img" />
+      <div class="hero-container">
+        <div class="hero-text-content">
+          <p class="hero-tagline">Fiqh Academy Presents</p>
+          <h1 class="hero-title">Weekly Tafseer Quran</h1>
+          <p class="hero-description">
+            Authentic and easy-to-understand Tafsir of the Qur'an<br />
+            A beautiful opportunity to learn Islamic teachings and implement them in daily life<br />
+            Q&A session included
+          </p>
+          <h2 class="hero-author">Maulana Syed Osama Ali</h2>
+          <p class="hero-role">Director, Johar Campus Fiqh Academy</p>
+
+          <div class="hero-meta-row">
+            <div class="meta-item"><span class="meta-icon">📅</span><span>Every Wednesday</span></div>
+            <div class="meta-item"><span class="meta-icon">⏰</span><span>After Isha</span></div>
+          </div>
+
+          <div class="hero-buttons-row">
+            <a href="#details" class="btn-teal">View Details</a>
+            <a href="#register" class="btn-teal">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-banner-section">
+    <img src="background/header background pic.png" alt="Feature Background Pattern" class="feature-bg-img" />
+    <div class="feature-teal-overlay"></div>
+
+    <div class="feature-container">
+      <div class="feature-column">
+        <div class="feature-icon-wrapper">
+          <img src="icon/Course.png" alt="Courses Icon" />
+        </div>
+        <h3 class="feature-title">Courses</h3>
+        <p class="feature-desc">
+          Islamic Educational Courses ranging from short-term & basic to long-term & advanced courses, offered in various Academic Programs throughout the day
+        </p>
+      </div>
+
+      <div class="feature-column">
+        <div class="feature-icon-wrapper">
+          <img src="icon/meeting.png" alt="Events Icon" />
+        </div>
+        <h3 class="feature-title">Events</h3>
+        <p class="feature-desc">
+          Academic & Spiritual Events based on Duroos, Lectures, Workshops, Spiritual Gatherings and Presentations including both recurring & one-time events
+        </p>
+      </div>
+
+      <div class="feature-column">
+        <div class="feature-icon-wrapper">
+          <img src="icon/book.png" alt="Mafahim Icon" />
+        </div>
+        <h3 class="feature-title">Mafahim</h3>
+        <p class="feature-desc">
+          A monthly publication that upholds and represents the visionary values of Classical Islamic Wisdom - Quenching your thirst for Islamic literature, jurisprudence, and self-reformation
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-text-col">
+        <p class="about-subline">WELCOME TO</p>
+        <h2 class="about-headline">
+          <span class="teal-text">FIQH</span> <span class="blue-text">ACADEMY</span>
+        </h2>
+        <p class="about-paragraph">
+          Fiqh Academy, founded in 2018 under the supervision of bona fide, classical Ulama and Mashaikh, is an Islamic Educational Institute in Gulistan-e-Johar Karachi. Its operations are managed by a team of Ulama, Talaba, and Volunteers educated in both Islamic as well as Contemporary Knowledge. This Institute adheres to the Religious Orientation of Akabir Ulama-e-Deoband i.e. the most eminent tradition of Ahl-us-Sunnah Wal Jama'ah present especially in the Sub-Continent, and strictly follows the Religious Rulings of Ulama-e-Deoband under Fiqh-e-Hanafi.
+        </p>
+        <a href="about.html" class="about-btn">ABOUT US</a>
+      </div>
+
+      <div class="about-video-col">
+        <div class="video-responsive-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/x2_hbfzc7I8" 
+            title="Fiqh Academy Introduction Video" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="latest-programs-section">
+    <div class="latest-programs-container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Latest Programs</h2>
+        <div class="title-decorative-line">
+          <span class="title-icon">🕋</span>
+        </div>
+      </div>
+
+      <div class="programs-grid" id="youtube-programs-grid">
+        </div>
+
+      <a href="https://www.youtube.com/@FiqhAcademyofficial/videos" target="_blank" class="browse-all-btn">Browse all</a>
+    </div>
+  </section>
+
+  <section class="latest-events-section" id="events">
+    <img src="background/header background pic.png" alt="Pattern Background" class="events-bg-pattern" />
+    <div class="events-teal-overlay"></div>
+
+    <div class="events-container">
+      <h2 class="events-section-title">Latest Events</h2>
+      <div class="events-title-line">
+        <span class="title-icon">🕋</span>
+      </div>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-img-wrapper">
+            <img src="event/dares e quran (1) (1).png" alt="Weekly Tafseer Quran Flyer" />
+          </div>
+          <h3 class="event-title">Weekly Tafseer Quran</h3>
+          <div class="event-meta-details">
+            <p class="event-info">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+              @ 07:30 PM - 08:30 PM
+            </p>
+            <p class="event-info">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
+              Masjid Campus
+            </p>
+          </div>
+          <span class="event-online-badge">Online</span>
+        </div>
+
+        <div class="event-card">
+          <div class="event-img-wrapper">
+            <img src="event/islah majlish (1) (1).png" alt="Islahi Majlis Flyer" />
+          </div>
+          <h3 class="event-title">Islahi Majlis</h3>
+          <div class="event-meta-details">
+            <p class="event-info">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+              @ 07:00 PM - 08:00 PM
+            </p>
+            <p class="event-info">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
+              Johar Campus Fiqh Academy
+            </p>
+          </div>
+          <span class="event-online-badge">Online</span>
+        </div>
+
+        <div class="event-card">
+          <div class="event-img-wrapper">
+            <img src="event/Abiab ul mushrat (1).png" alt="Adab-ul-Muashrat Flyer" />
+          </div>
+          <h3 class="event-title">Adab-ul-Muashrat</h3>
+          <div class="event-meta-details">
+            <p class="event-info">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+              @ 10:50 PM - 11:00 PM
+            </p>
+            <p class="event-info">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z"/></svg>
+              Johar Campus Fiqh Academy
+            </p>
+          </div>
+          <span class="event-online-badge">Online</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="campuses-section" id="campuses">
+    <div class="campuses-container">
+      
+      <h2 class="campuses-main-title">Explore Our Three Campuses Across Karachi for Islamic Learning</h2>
+
+      <div class="campuses-top-grid">
+        <div class="campus-card">
+          <div class="campus-img-wrapper">
+            <img src="Campus pic/Fiqhacademy.webp" alt="Johar Campus" />
+            <span class="campus-badge">Karachi</span>
+          </div>
+          <div class="campus-content">
+            <p class="campus-tagline">Fiqh Academy</p>
+            <h3 class="campus-name">Johar Campus</h3>
+            <p class="campus-description">
+              The Johar Campus of Fiqh Academy, founded in 2018 under the supervision of classical Ulama and Mashaikh, is an Islamic Educational Institute in Gulistan-e-Johar Karachi.
+            </p>
+            <a href="locations.html#johar-campus" class="campus-learn-btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="campus-card">
+          <div class="campus-img-wrapper">
+            <img src="Campus pic/masjid.webp" alt="Masjid Campus" />
+            <span class="campus-badge">Karachi</span>
+          </div>
+          <div class="campus-content">
+            <p class="campus-tagline">Fiqh Academy</p>
+            <h3 class="campus-name">Masjid Campus</h3>
+            <p class="campus-description">
+              Offers a spiritually focused learning environment emphasizing Quranic education and character development within a traditional mosque-based setting.
+            </p>
+            <a href="locations.html#masjid-campus" class="campus-learn-btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="campus-card">
+          <div class="campus-img-wrapper">
+            <img src="Campus pic/maktab.jpg" alt="Maktab Campus" />
+            <span class="campus-badge">Karachi</span>
+          </div>
+          <div class="campus-content">
+            <p class="campus-tagline">Fiqh Academy</p>
+            <h3 class="campus-name">Maktab Campus</h3>
+            <p class="campus-description">
+              Nurtures students' spiritual, academic, and personal growth while fostering a love for the Quran and equipping them with essential modern skills.
+            </p>
+            <a href="locations.html#maktab-campus" class="campus-learn-btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campuses-bottom-grid">
+        <div class="campus-card">
+          <div class="campus-img-wrapper">
+            <img src="Campus pic/Fiqhacademy.webp" alt="Main Campus" />
+            <span class="campus-badge">Karachi</span>
+          </div>
+          <div class="campus-content">
+            <p class="campus-tagline">Fiqh Academy</p>
+            <h3 class="campus-name">Main Campus</h3>
+            <p class="campus-description">
+              The central hub for administrative operations, specialized research departments, and comprehensive Islamic education programs.
+            </p>
+            <a href="locations.html#main-campus" class="campus-learn-btn">Learn More</a>
+          </div>
+        </div>
+
+        <div class="campus-card">
+          <div class="campus-img-wrapper">
+            <img src="Campus pic/Fiqhacademy.webp" alt="E Academy" />
+            <span class="campus-badge">Online</span>
+          </div>
+          <div class="campus-content">
+            <p class="campus-tagline">Fiqh Academy</p>
+            <h3 class="campus-name">E Academy</h3>
+            <p class="campus-description">
+              Providing global access to classical Islamic courses online for students and professionals seeking authentic Islamic knowledge from home.
+            </p>
+            <a href="locations.html#e-academy" class="campus-learn-btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="courses-slider-section" id="courses">
+    <div class="courses-slider-container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Explore Our Courses</h2>
+        <div class="title-decorative-line">
+          <span class="title-icon">🕋</span>
+        </div>
+      </div>
+
+      <button class="courses-nav-arrow left" onclick="prevCourseSlide()" aria-label="Previous Course">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+
+      <button class="courses-nav-arrow right" onclick="nextCourseSlide()" aria-label="Next Course">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </button>
+
+      <div class="courses-track-wrapper">
+        <div class="courses-track" id="courses-track">
+          
+          <div class="course-slide-card">
+            <div class="course-slide-img-wrap">
+              <img src="event/dares e quran (1) (1).png" alt="Darse Nazmi" />
+            </div>
+            <h3 class="course-slide-title">Darse Nazmi</h3>
+            <p class="course-slide-desc">Comprehensive Islamic educational curriculum covering classical texts, jurisprudence, and foundational studies.</p>
+            <a href="courses.html" class="course-slide-btn">View Details</a>
+          </div>
+
+          <div class="course-slide-card">
+            <div class="course-slide-img-wrap">
+              <img src="event/islah majlish (1) (1).png" alt="Spoken Arabic Course" />
+            </div>
+            <h3 class="course-slide-title">Spoken Arabic Course</h3>
+            <p class="course-slide-desc">Designed to help students build fluency and strong conversational skills in the Arabic language quickly.</p>
+            <a href="courses.html" class="course-slide-btn">View Details</a>
+          </div>
+
+          <div class="course-slide-card">
+            <div class="course-slide-img-wrap">
+              <img src="event/Abiab ul mushrat (1).png" alt="Adab-ul-Muashrat" />
+            </div>
+            <h3 class="course-slide-title">Adab-ul-Muashrat</h3>
+            <p class="course-slide-desc">Learn the Islamic etiquettes of social conduct, character building, and daily interpersonal interactions.</p>
+            <a href="courses.html" class="course-slide-btn">View Details</a>
+          </div>
+
+          <div class="course-slide-card">
+            <div class="course-slide-img-wrap">
+              <img src="event/dares e quran (1) (1).png" alt="Tafseer-ul-Quran" />
+            </div>
+            <h3 class="course-slide-title">Tafseer-ul-Quran</h3>
+            <p class="course-slide-desc">Authentic and easy-to-understand Tafsir of the Holy Qur'an with detailed implementation insights.</p>
+            <a href="courses.html" class="course-slide-btn">View Details</a>
+          </div>
+
+          <div class="course-slide-card">
+            <div class="course-slide-img-wrap">
+              <img src="event/islah majlish (1) (1).png" alt="Fiqh of Financial Transactions" />
+            </div>
+            <h3 class="course-slide-title">Fiqh of Financial Transactions</h3>
+            <p class="course-slide-desc">Master the rules of modern business, banking, and commercial dealings under Islamic jurisprudence.</p>
+            <a href="courses.html" class="course-slide-btn">View Details</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="courses-dots" id="courses-dots">
+        <span class="course-dot active" onclick="setCourseSlide(0)"></span>
+        <span class="course-dot" onclick="setCourseSlide(1)"></span>
+        <span class="course-dot" onclick="setCourseSlide(2)"></span>
+      </div>
+
+      <a href="courses.html" class="browse-all-btn">Browse all courses</a>
+    </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <div class="features-container">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Our Features</h2>
+        <div class="title-decorative-line">
+          <span class="title-icon">🕋</span>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <a href="https://www.yasalunak.com/" target="_blank" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Darul Ifta Yasalunak</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="book.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Library</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="articles.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Duroos e Quran</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="islahimajlis.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Spiritual Gathering</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Deendar Rishtay</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="book.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.95 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Bookstore</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="iqbaliat.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm-1-9c0-.55.45-1 1-1s1 .45 1 1v6c0 .55-.45 1-1 1s-1-.45-1-1V5zm6 6c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Iqbaliyat</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.88-11.71L10 14.17l-1.88-1.88L7 13.71l3 3 7-7-1.12-1.42z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Qibla Marking</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="donations.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h7v8l2.5-1.5L17 12V4h2v16z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Aqeeqah service</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="about.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Sharia Constitution</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="courses.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Halal Awareness Training</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h7v8l2.5-1.5L17 12V4h2v16z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Professional Forums</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="events.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Umrah & Hajj Training</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Community Services</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="courses.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h7v8l2.5-1.5L17 12V4h2v16z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Overseas program</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Nikkah Program</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Tajheez o Tadfeen</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="courses.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h7v8l2.5-1.5L17 12V4h2v16z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Career Counseling</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="events.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Duroos Services</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="courses.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Language classes</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+
+        <a href="contact.html" class="feature-item-card">
+          <div class="feature-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74 0-2.48-2.02-4.5-4.5-4.5S7 5.28 7 7.75c0 1.56.79 2.93 2 3.49zm9.5 2.15l-3.23-1.45c-.56-.25-1.22-.05-1.57.47l-1.3 1.95c-2.37-.87-4.22-2.73-5.09-5.1l1.95-1.3c.52-.35.72-1.01.47-1.57L9.61 2.5c-.35-.78-1.25-1.12-2.02-.75L5.59 2.6c-1.37.66-2.12 2.17-1.74 3.66 1.05 4.14 4.3 7.39 8.44 8.44 1.49.38 3-.37 3.66-1.74l.85-2.01c.37-.77.03-1.67-.74-2.02z"/></svg>
+          </div>
+          <h3 class="feature-card-title">Volunteer Program</h3>
+          <span class="feature-card-link">Read More</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="academy-footer">
+    <div class="footer-stats-bar">
+      <h2 class="footer-stat-headline">Start learning with 4000<br />students around the world.</h2>
+      
+      <div class="footer-stats-group">
+        <div class="footer-stat-item">
+          <span class="footer-stat-number">85</span>
+          <span class="footer-stat-label">Online Courses</span>
+        </div>
+        <div class="footer-stat-item">
+          <span class="footer-stat-number">21</span>
+          <span class="footer-stat-label">Certified Instructors</span>
+        </div>
+        <div class="footer-stat-item">
+          <span class="footer-stat-number">4000</span>
+          <span class="footer-stat-label">Students</span>
+        </div>
+      </div>
+
+      <div class="footer-stat-actions">
+        <a href="contact.html" class="footer-btn-dark">Contact Us</a>
+        <a href="donations.html" class="footer-btn-dark">Donate Now</a>
+        <a href="courses.html" class="footer-btn-dark">Browse All Courses</a>
+      </div>
+    </div>
+
+    <div class="footer-main-content">
+      <div class="footer-brand-col">
+        <img src="logo/Asset-1-1.png" alt="Fiqh Academy Karachi Logo" class="footer-brand-logo" />
+        <p class="footer-brand-text">
+          To educate Muslim masses in the light of Islamic ideology and Sciences using modern phraseology by carrying forward the deep-rooted tradition of Masjid, Madrasah, and Khanqah, so that they are equipped to resist the all-out western intellectual invasion.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/FiqhAcademy" target="_blank" class="footer-social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+          <a href="https://x.com/FiqhAcademyPK" target="_blank" class="footer-social-icon" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://chat.whatsapp.com/LT9e6ecJCyBA0myFVZv82s" target="_blank" class="footer-social-icon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@FiqhAcademyofficial" target="_blank" class="footer-social-icon" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Quick Links</h3>
+        <ul class="footer-links-list">
+          <li><a href="index.html" class="footer-link active">Home Education</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="events.html" class="footer-link">Events</a></li>
+          <li><a href="donations.html" class="footer-link">Donations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Explore Our Courses</h3>
+        <ul class="footer-links-list">
+          <li><a href="courses.html" class="footer-link">Taleem ul Islam</a></li>
+          <li><a href="courses.html" class="footer-link">Full Time Alim Course</a></li>
+          <li><a href="courses.html" class="footer-link">Dars-e-Nizami</a></li>
+          <li><a href="courses.html" class="footer-link">Arabic Grammar Course</a></li>
+          <li><a href="courses.html" class="footer-link">Arabic Language Course</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Our Campuses</h3>
+        <ul class="footer-links-list">
+          <li><a href="locations.html#johar-campus" class="footer-link">Johar Campus</a></li>
+          <li><a href="locations.html#masjid-campus" class="footer-link">Masjid Campus</a></li>
+          <li><a href="locations.html#maktab-campus" class="footer-link">Maktab Campus</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p>&copy; 2025 Fiqh Academy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile Navigation & Dropdown Toggle logic */
+    (function() {
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        if (mobileToggle && mainNav) {
+            mobileToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('mobile-active');
+                const icon = mobileToggle.querySelector('i');
+                if (mainNav.classList.contains('mobile-active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Mobile Dropdown toggles
+            const dropdownItems = mainNav.querySelectorAll('.nav-item.dropdown');
+            dropdownItems.forEach(item => {
+                const link = item.querySelector('.nav-link');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        item.classList.toggle('mobile-open');
+                    }
+                });
+            });
+        }
+    })();
+
+    /* Hero Slider logic */
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    /* Courses Slider logic */
+    let currentCourseIndex = 0;
+
+    function updateCourseSlider() {
+      const track = document.getElementById('courses-track');
+      const cards = document.querySelectorAll('.course-slide-card');
+      const dots = document.querySelectorAll('.course-dot');
+
+      if (!track || cards.length === 0) return;
+
+      const isMobile = window.innerWidth <= 992;
+      const visibleCards = isMobile ? 1 : 3;
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+
+      if (currentCourseIndex > maxIndex) currentCourseIndex = 0;
+      if (currentCourseIndex < 0) currentCourseIndex = maxIndex;
+
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 28;
+      const offset = currentCourseIndex * (cardWidth + gap);
+
+      track.style.transform = `translateX(-${offset}px)`;
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentCourseIndex);
+      });
+    }
+
+    function nextCourseSlide() {
+      const cards = document.querySelectorAll('.course-slide-card');
+      const visibleCards = window.innerWidth <= 992 ? 1 : 3;
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+      
+      currentCourseIndex = (currentCourseIndex + 1) > maxIndex ? 0 : currentCourseIndex + 1;
+      updateCourseSlider();
+    }
+
+    function prevCourseSlide() {
+      const cards = document.querySelectorAll('.course-slide-card');
+      const visibleCards = window.innerWidth <= 992 ? 1 : 3;
+      const maxIndex = Math.max(0, cards.length - visibleCards);
+
+      currentCourseIndex = (currentCourseIndex - 1) < 0 ? maxIndex : currentCourseIndex - 1;
+      updateCourseSlider();
+    }
+
+    function setCourseSlide(index) {
+      currentCourseIndex = index;
+      updateCourseSlider();
+    }
+
+    window.addEventListener('resize', updateCourseSlider);
+
+    /* YouTube Videos Fetching logic */
+    const defaultPrograms = [
+      { id: "CD03eRXlhns", title: "Uloom Ul Quran | Session 04" },
+      { id: "x2_hbfzc7I8", title: "مطالعہ دل کی دنیا درس 01" },
+      { id: "CD03eRXlhns", title: "اصلاحی مجلس | بنی اسرائیل کے لیے 5 احکام" },
+      { id: "x2_hbfzc7I8", title: "کتابیں اپنے آبا کی | فتوح الہند از مولانا مفتی محمد شفیع عثمانی صاحب" },
+      { id: "CD03eRXlhns", title: "مجلس اقبالیات" },
+      { id: "x2_hbfzc7I8", title: "Uloom Ul Quran | Session 04" }
+    ];
+
+    function renderVideoCards(videos) {
+      const grid = document.getElementById('youtube-programs-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      videos.slice(0, 6).forEach(video => {
+        const videoId = video.id || (video.link ? video.link.split('v=')[1] : '');
+        const cardHtml = `
+          <div class="program-card">
+            <div class="card-video-wrapper">
+              <iframe 
+                src="https://www.youtube.com/embed/${videoId}" 
+                title="${video.title}" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="program-card-title">${video.title}</a>
+          </div>
+        `;
+        grid.innerHTML += cardHtml;
+      });
+    }
+
+    async function fetchLatestYouTubeVideos() {
+      const channelRssUrl = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCtS83N592YvHwJv30dZ5H0w';
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(channelRssUrl)}`;
+
+      try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+          const fetchedVideos = data.items.map(item => ({
+            id: item.guid.replace('yt:video:', ''),
+            title: item.title
+          }));
+          renderVideoCards(fetchedVideos);
+        } else {
+          renderVideoCards(defaultPrograms);
+        }
+      } catch (err) {
+        renderVideoCards(defaultPrograms);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchLatestYouTubeVideos();
+      updateCourseSlider();
+    });
+  </script>
+
+</body>
+</html>
